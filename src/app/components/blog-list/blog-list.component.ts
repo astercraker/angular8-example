@@ -42,6 +42,10 @@ export class BlogListComponent implements OnInit {
 
   }
 
+  deleteBlog(value: BlogModel){
+    this.blogs.splice( this.blogs.indexOf(value) ,1);
+  }
+
   ngOnInit() {
   }
 

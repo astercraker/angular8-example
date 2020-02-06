@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { BlogModel } from '../../BlogModel'
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { BlogModel } from '../../BlogModel';
 
 @Component({
   selector: 'blog-item',
@@ -8,8 +8,14 @@ import { BlogModel } from '../../BlogModel'
 })
 export class BlogItemComponent implements OnInit {
   @Input() blog: BlogModel;
+  @Output() deleteBlog: EventEmitter<BlogModel> = new EventEmitter();
   constructor() { 
     
+  }
+
+  emitToParent(){
+    //console.log(this.blog);
+    this.deleteBlog.emit(this.blog);
   }
 
   MultiplyRating(value: number){

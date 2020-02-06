@@ -1,5 +1,5 @@
 <div class="container">
     <div class="columns" >
-        <blog-item *ngFor="let item of blogs" [blog]="item"></blog-item>
+        <blog-item *ngFor="let item of blogs" [blog]="item" (deleteBlog)="deleteBlog($event)" class="column is-one-quarter"></blog-item>
     </div>
 </div>
