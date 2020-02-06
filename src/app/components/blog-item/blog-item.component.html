@@ -2,7 +2,7 @@
 <div class="card">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img src="{{ imageUrl }}" alt="Placeholder image">
+        <img [src]="blog.imageUrl" alt="Placeholder image">
       </figure>
     </div>
     <div class="card-content">
@@ -13,16 +13,23 @@
           </figure>
         </div> -->
         <div class="media-content">
-          <p class="title is-4">{{ name }}</p>
+          <p [ngClass]="{'red': blog.rating > 1 }" class="title is-4">{{ blog.name }}</p>
           <!-- <p class="subtitle is-6">@johnsmith</p> -->
         </div>
       </div>
   
       <div class="content">
-        {{ description }}
+        {{ blog.description }}
         <br>
-        <time datetime="2016-1-1">{{ date | date :  "dd-MM-y"  }}</time>
+        <time datetime="2016-1-1">{{ blog.date | date :  "dd-MM-y"  }}</time>
+        &nbsp;&nbsp;{{ MultiplyRating( blog.rating ) }}
+
       </div>
     </div>
+    <footer class="card-footer">
+      <!-- <a href="#" class="card-footer-item">Save</a>
+      <a href="#" class="card-footer-item">Edit</a> -->
+      <a href="#" class="card-footer-item">Borrar</a>
+    </footer>
   </div>
 </div>

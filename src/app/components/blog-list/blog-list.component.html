@@ -1,8 +1,5 @@
 <div class="container">
-    <div class="columns">
-        <blog-item></blog-item>
-        <blog-item></blog-item>
-        <blog-item></blog-item>
-        <blog-item></blog-item>
+    <div class="columns" >
+        <blog-item *ngFor="let item of blogs" [blog]="item"></blog-item>
     </div>
 </div>
