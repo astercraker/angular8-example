@@ -1,5 +1,71 @@
+<!-- <header></header> -->
+<div class="modal" [ngClass]="{'is-active': showModal }">
+    <div class="modal-background" (click)="showModal = false"></div>
+    <div class="modal-card">
+      <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm)">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Agregar Nuevo</p>
+        <button class="delete" aria-label="close" (click)="showModal = false"></button>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ... -->
+
+          
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Nombre</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                   <!-- {{ inputField.value }} -->
+                  <input formControlName="name" class="input" type="text" placeholder="Nombre Post">
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Descripción</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                    <textarea formControlName="description" class="textarea is-info" placeholder="Descripcion"></textarea>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Url imagen:</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input formControlName="imageUrl" class="input" type="text" placeholder="url imagen">
+                </p>
+              </div>
+            </div>
+          </div>
+      </section>
+      <footer class="modal-card-foot">
+        <!-- <button class="button is-success" (click)="saveChange(rForm.value)" [disabled]="!rForm.valid">Save changes</button> -->
+        <button type="submit" class="button is-success" [disabled]="!rForm.valid">Enviar</button>
+        <button class="button" (click)="showModal = false">Cancel</button> 
+      </footer>
+    </form>
+    </div>
+  </div>
+
 <div class="container">
-    <div class="columns" >
-        <blog-item *ngFor="let item of blogs" [blog]="item" (deleteBlog)="deleteBlog($event)" class="column is-one-quarter"></blog-item>
+    <div class="columns">
+        <div class="column">
+            <button class="button is-info modal-button" (click)="showModal = true" style="margin: 20px 0;" data-target="modal" aria-haspopup="true">Agregar</button>
+        </div>
+    </div>
+    <div class="columns is-multiline" >
+        <blog-item *ngFor="let item of blogs" [blog]="item" (deleteBlog)="deleteBlog($event)"
+        class="column is-one-quarter" ></blog-item>
     </div>
 </div>

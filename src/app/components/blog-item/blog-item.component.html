@@ -13,7 +13,8 @@
           </figure>
         </div> -->
         <div class="media-content">
-          <p [ngClass]="{'red': blog.rating > 1 }" class="title is-4">{{ blog.name }}</p>
+          <p [ngClass]="{'red': blog.rating > 1 }" class="title is-4"><input [(ngModel)]="blog.name" /></p>
+          <p>{{ blog.name }}</p>
           <!-- <p class="subtitle is-6">@johnsmith</p> -->
         </div>
       </div>
@@ -30,7 +31,7 @@
       <!-- <a href="#" class="card-footer-item">Save</a>
       <a href="#" class="card-footer-item">Edit</a> -->
       <!-- <a href="#" class="card-footer-item" (click)="emitToParent()">Borrar</a> -->
-      <button class="card-footer-item" (click)="emitToParent()">Borrar</button>
+      <button class="button is-light is-fullwidth" (click)="emitToParent()" >Borrar</button>
     </footer>
   </div>
 <!-- </div> -->
