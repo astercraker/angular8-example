@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogModel } from '../../BlogModel';
 import {FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { BlogsService } from "../../services/blogs.service";
 
 
 @Component({
@@ -11,20 +12,12 @@ import {FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular
 export class BlogListComponent implements OnInit {
   public showModal:boolean = false;
   post:any;
-  public blogs: BlogModel[] = [
-    {
-      name : "Fisrt Title Post",
-      rating: Math.round(Math.random() * 5), 
-      date  : new Date("02/15/2020"),
-      description : "Esta es la descripción del post bien chidori, trata de temas bien chidoris entra neta",
-      imageUrl : "https://images.unsplash.com/photo-1495229159533-c7fcb0f1f014?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-    }
-  ];
+  public blogs: BlogModel[]
 
   rForm: FormGroup;
   //inputField: any;
   URL_REGEXP = /^[A-Za-z][A-Za-z\d.+-]*:\/*(?:\w+(?::\w+)?@)?[^\s/]+(?::\d+)?(?:\/[\w#!:.?+=&%@\-/]*)?$/;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private blogService: BlogsService) {
     
     this.rForm = fb.group(
       {
@@ -40,9 +33,11 @@ export class BlogListComponent implements OnInit {
   deleteBlog(value: BlogModel){
     this.blogs.splice( this.blogs.indexOf(value) ,1);
   }
-
+ 
   ngOnInit() {
+    this.blogs = this.blogService.getBlogs();
   }
+
   onSubmit(f: NgForm) {
     console.log(f.value);  // { first: '', last: '' }
     console.log(f.valid);  // false
@@ -59,7 +54,7 @@ export class BlogListComponent implements OnInit {
     //this.rForm.reset(this.rForm.value);
   }
   saveChange(input: any): void {
-    
+
     this.blogs.push({
       name : input.name,
       rating: Math.round(Math.random() * 5), 
