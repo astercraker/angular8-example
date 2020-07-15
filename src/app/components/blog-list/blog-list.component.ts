@@ -3,7 +3,6 @@ import { BlogModel } from '../../BlogModel';
 import {FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { BlogsService } from "../../services/blogs.service";
 
-
 @Component({
   selector: 'blog-list',
   templateUrl: './blog-list.component.html',

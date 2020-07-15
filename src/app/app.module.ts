@@ -8,6 +8,7 @@ import { BlogItemComponent } from './components/blog-item/blog-item.component';
 import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MiComponente,
     BlogItemComponent,
     BlogListComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
